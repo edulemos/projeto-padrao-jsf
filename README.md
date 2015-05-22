@@ -10,7 +10,6 @@
  * hibernate
  * maven
  * cdi
- * banco h2 memory
  
 ### Configurado:
  
