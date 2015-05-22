@@ -3,21 +3,21 @@
  
 ### tecnologias:
  
- eclipse
- tomcat 7
- jsf 2.2
- primefaces 5
- hibernate
- maven
- cdi
- banco h2 memory
+ * eclipse
+ * tomcat 7
+ * jsf 2.2
+ * primefaces 5
+ * hibernate
+ * maven
+ * cdi
+ * banco h2 memory
  
 ### congigurado:
  
- configurações pom
- template facelet
- jpa persistence unit
- tela login
- tela inicial
+ * configurações pom
+ * template facelet
+ * jpa persistence unit
+ * tela login
+ *tela inicial
 
 
