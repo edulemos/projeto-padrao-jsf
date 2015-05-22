@@ -1,7 +1,7 @@
 # projeto-padrao-jsf
-## projeto usado como pontape inicial para novos projetos
+## Projeto usado como pontape inicial para novos projetos
  
-### tecnologias:
+### Tecnologias:
  
  * eclipse
  * tomcat 7
@@ -12,7 +12,7 @@
  * cdi
  * banco h2 memory
  
-### congigurado:
+### Configurado:
  
  * configurações pom
  * template facelet
