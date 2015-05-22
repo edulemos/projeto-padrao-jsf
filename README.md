@@ -16,8 +16,11 @@
  
  * configurações pom
  * template facelet
+ * primefaces layout
  * jpa persistence unit
  * tela login
  * tela inicial
+ * banco H2
+ 
 
 
