@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<style>
+		.ui-layout-west {
+			z-index: 20 !important;
+			overflow: visible !important;;
+		}
+		
+		.ui-layout-west .ui-layout-unit-content {
+			overflow: visible !important;
+		}
+		
+		ul.ui-menu-child {
+		    white-space: nowrap;
+		    width: auto !important;
+		    min-width: 100px;
+		}
+	</style>
+
+	<h:form>
+		<p:tieredMenu id="menu">
+			<p:menuitem value="CONSOLE H2" url="/console"/>		
+			<p:separator />
+			<p:submenu label="MENU">
+				<p:menuitem value="submenu"/>			
+				<p:menuitem value="submenu" />			
+				<p:menuitem value="submenu" />
+				<p:menuitem value="submenu" />
+				<p:menuitem value="submenu" />				
+			</p:submenu>
+		</p:tieredMenu>
+	</h:form>
+
+</ui:composition>
