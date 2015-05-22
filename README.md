@@ -18,6 +18,6 @@
  * template facelet
  * jpa persistence unit
  * tela login
- *tela inicial
+ * tela inicial
 
 
