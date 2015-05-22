@@ -1,4 +1,4 @@
-# projeto-padrao-jsf
+# PROJETO PADRÃO JSF
 ## Projeto usado como pontape inicial para novos projetos
  
 ### Tecnologias:
