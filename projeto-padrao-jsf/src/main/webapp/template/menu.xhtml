@@ -23,17 +23,19 @@
 	</style>
 
 	<h:form>
-		<p:tieredMenu id="menu">
-			<p:menuitem value="CONSOLE H2" url="/console"/>		
+		<p:menu id="menu" toggleable="true">
 			<p:separator />
-			<p:submenu label="MENU">
+			<p:submenu label="ADMIN">
+				<p:menuitem value="CONSOLE H2" url="/console" target="_blank"/>		
+			</p:submenu>
+			<p:submenu label="CADASTRO">
 				<p:menuitem value="submenu"/>			
 				<p:menuitem value="submenu" />			
 				<p:menuitem value="submenu" />
 				<p:menuitem value="submenu" />
 				<p:menuitem value="submenu" />				
 			</p:submenu>
-		</p:tieredMenu>
+		</p:menu>
 	</h:form>
 
 </ui:composition>
