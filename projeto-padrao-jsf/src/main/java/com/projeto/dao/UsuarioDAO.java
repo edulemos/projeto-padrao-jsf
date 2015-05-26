@@ -1,7 +1,5 @@
 package com.projeto.dao;
 
-import java.io.Serializable;
-
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -9,33 +7,17 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import com.projeto.model.Usuario;
+import com.projeto.util.Transactional;
 
-public class UsuarioDAO  implements Serializable {
-
+public class UsuarioDAO extends GenericDAO<Usuario>{
 	private static final long serialVersionUID = 1L;
 	
-	private EntityManager manager;
-
 	@Inject
 	public UsuarioDAO(EntityManager manager) {
-		this.manager = manager;
+		super(manager);	
 	}
 	
-	public void salvar(Usuario usuario){
-		manager.persist(usuario);
-	}
-	
-	public void insereUsuarioTeste() {
-		EntityTransaction trx = manager.getTransaction();
-		trx.begin();
-		Usuario usuario = new Usuario();
-		usuario.setNome("admin");
-		usuario.setSenha("123456");
-		manager.persist(usuario);
-		trx.commit();		
-	}
-	
-	public Usuario login(Usuario usuario){
+	public Usuario getUsuarioLogin(Usuario usuario){
 		try {
 			String jpql = "from Usuario where nome = :prm1 and senha = :prm2";
 			TypedQuery<Usuario> query = manager.createQuery(jpql, Usuario.class)
@@ -46,5 +28,17 @@ public class UsuarioDAO  implements Serializable {
 			return null;
 		}
 	}
+	
+	@Transactional
+	public void salvarUsuarioteste() {
+		EntityTransaction trx = manager.getTransaction();
+		trx.begin();
+		Usuario usuario = new Usuario();
+		usuario.setNome("admin");
+		usuario.setSenha("123456");
+		manager.persist(usuario);
+		trx.commit();		
+	}
+	
 	
 }

@@ -1,6 +1,7 @@
 package com.projeto.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -12,9 +13,11 @@ import com.projeto.service.UsuarioService;
 
 @Named
 @ViewScoped
-public class IndexController extends UtilController implements Serializable {
+public class UsuarioController extends UtilController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	private List<Usuario> listaUsuarios;
 
 	@Inject
 	UsuarioService service;
@@ -23,18 +26,8 @@ public class IndexController extends UtilController implements Serializable {
 	Usuario usuario;
 
 	@PostConstruct
-	public void init(){
-		service.salvarUsuarioteste();
-	}	
-
-	public String login() {
-		
-		if(service.auntenticar(usuario)){
-            return "pages/home?faces-redirect=true";
-		}else{
-			addWarnMessage("Usuario e/ou senha invalido(s).");
-			return "";
-		}
+	public void init() {
+		listaUsuarios = service.listar();
 	}
 
 	public Usuario getUsuario() {
@@ -43,6 +36,14 @@ public class IndexController extends UtilController implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
 	}
 
 }
