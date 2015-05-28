@@ -21,17 +21,18 @@
 
 	<br></br>
 	<div align="center">
-		<h:form>
+		<h:form id="login-form">
 			<p:panel header="LOGIN" style="width: 350px">
 			<p:messages id="messages" />
 				<p:panelGrid columns="2">
 					<p:outputLabel for="nome" value="Usuário:" />
-					<p:inputText id="nome" value="#{loginController.usuario.nome}" />
+					<p:inputText id="nome" value="#{loginController.usuario.nome}" required="true" requiredMessage="Campo Usuário Obrigatório" />
 
 					<p:outputLabel for="senha" value="Senha:" />
-					<p:password id="senha" value="#{loginController.usuario.senha}" />
+					<p:password id="senha" value="#{loginController.usuario.senha}" required="true" requiredMessage="Campo Senha Obrigatório" />
 
 					<p:commandButton value="Enviar" action="#{loginController.login}" ajax="false" />
+					<p:commandLink value="recuperar senha"/>
 				</p:panelGrid>
 			</p:panel>
 		</h:form>
