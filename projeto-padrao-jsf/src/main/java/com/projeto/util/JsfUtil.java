@@ -1,4 +1,4 @@
-package com.projeto.controller;
+package com.projeto.util;
 
 import java.util.Map;
 
@@ -6,7 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-public abstract class UtilController {
+public abstract class JsfUtil {
 
     public void addErrorMessage(String msg) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, null));

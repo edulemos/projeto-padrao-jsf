@@ -14,9 +14,8 @@ public class UsuarioService implements Serializable {
 	@Inject
 	UsuarioDAO dao;
 
-	public boolean auntenticar(Usuario usuario) {
-		Usuario u = dao.getUsuarioLogin(usuario);
-		return null != u;
+	public Usuario usuarioLogin(Usuario usuario) {
+		return dao.getUsuarioLogin(usuario);
 	}
 
 	public void salvarUsuarioteste() {

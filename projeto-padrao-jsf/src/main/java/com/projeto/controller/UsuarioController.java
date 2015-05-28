@@ -10,10 +10,11 @@ import javax.inject.Named;
 
 import com.projeto.model.Usuario;
 import com.projeto.service.UsuarioService;
+import com.projeto.util.JsfUtil;
 
 @Named
 @ViewScoped
-public class UsuarioController extends UtilController implements Serializable {
+public class UsuarioController extends JsfUtil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

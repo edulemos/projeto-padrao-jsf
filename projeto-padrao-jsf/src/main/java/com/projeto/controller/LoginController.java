@@ -9,10 +9,11 @@ import javax.inject.Named;
 
 import com.projeto.model.Usuario;
 import com.projeto.service.UsuarioService;
+import com.projeto.util.JsfUtil;
 
 @Named
 @ViewScoped
-public class LoginController extends UtilController implements Serializable {
+public class LoginController extends JsfUtil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +30,10 @@ public class LoginController extends UtilController implements Serializable {
 
 	public String login() {
 		
-		if(service.auntenticar(usuario)){
+		Usuario usuarioLogin = service.usuarioLogin(usuario);
+		
+		if(null != usuarioLogin){
+			setSessionAttribute("usuario", usuario);
             return "pages/home?faces-redirect=true";
 		}else{
 			addWarnMessage("Usuario e/ou senha invalido(s).");

@@ -4,8 +4,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
 
-<h1>PROJETO PADRÃO</h1>
+	<style>
+		.c1 {
+			text-align: left;
+		}
+		.c2 {
+			text-align: right;
+		}
+		
+		.ui-layout-north {
+			z-index: 20 !important;
+			overflow: visible !important;
+		}
+		
+		.ui-layout-north .ui-layout-unit-content {
+			overflow: visible !important;
+		}
+		
+		.ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap,
+			.ui-layout-bd, .ui-layout-hd {
+			border: none;
+		}
+		
+		.ui-layout-unit .ui-layout-unit-content {
+			border: 0px none;
+		}
+</style>
+
+<p:panelGrid columns="2" layout="grid" columnClasses="c1,c2">            
+    <h:graphicImage library="img" name="logo.jpg"/>   
+    <h:outputText value="Usuario: #{usuario.nome}"/>
+</p:panelGrid>
 
 </ui:composition>
