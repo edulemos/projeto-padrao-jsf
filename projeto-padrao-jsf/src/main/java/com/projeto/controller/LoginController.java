@@ -3,6 +3,7 @@ package com.projeto.controller;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,11 +23,11 @@ public class LoginController extends JsfUtil implements Serializable {
 
 	@Inject
 	Usuario usuario;
-
+	
 	@PostConstruct
 	public void init(){
-		service.salvarUsuarioteste();
-	}	
+		service.createBase();
+	}
 
 	public String login() {
 		
@@ -40,6 +41,11 @@ public class LoginController extends JsfUtil implements Serializable {
 			return "";
 		}
 	}
+	
+	public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/login?faces-redirect=true";
+    }
 
 	public Usuario getUsuario() {
 		return usuario;

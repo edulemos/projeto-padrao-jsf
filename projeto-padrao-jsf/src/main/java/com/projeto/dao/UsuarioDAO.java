@@ -2,7 +2,6 @@ package com.projeto.dao;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
@@ -17,6 +16,7 @@ public class UsuarioDAO extends GenericDAO<Usuario>{
 		super(manager);	
 	}
 	
+	@Transactional
 	public Usuario getUsuarioLogin(Usuario usuario){
 		try {
 			String jpql = "from Usuario where nome = :prm1 and senha = :prm2";
@@ -28,17 +28,5 @@ public class UsuarioDAO extends GenericDAO<Usuario>{
 			return null;
 		}
 	}
-	
-	@Transactional
-	public void salvarUsuarioteste() {
-		EntityTransaction trx = manager.getTransaction();
-		trx.begin();
-		Usuario usuario = new Usuario();
-		usuario.setNome("admin");
-		usuario.setSenha("123456");
-		manager.persist(usuario);
-		trx.commit();		
-	}
-	
 	
 }

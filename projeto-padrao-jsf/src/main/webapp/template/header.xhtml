@@ -6,13 +6,10 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<style>
-		.c1 {
-			text-align: left;
+		.c1{
+		  text-align: right;
 		}
-		.c2 {
-			text-align: right;
-		}
-		
+			
 		.ui-layout-north {
 			z-index: 20 !important;
 			overflow: visible !important;
@@ -32,9 +29,16 @@
 		}
 </style>
 
-<p:panelGrid columns="2" layout="grid" columnClasses="c1,c2">            
-    <h:graphicImage library="img" name="logo.jpg"/>   
-    <h:outputText value="Usuario: #{usuario.nome}"/>
-</p:panelGrid>
+<h:form>
+
+	<p:panelGrid columns="3" layout="grid" columnClasses="c1,c1,c1">            
+	    <h:graphicImage library="img" name="logo.jpg"/>
+        <h:outputText value="Usuario: #{usuario.nome}"/>
+		<p:commandLink action="#{loginController.logout()}" >
+		  <h:graphicImage library="img" name="exit.png" height="20" width="20"/>
+		</p:commandLink>
+	</p:panelGrid>
+	
+</h:form>
 
 </ui:composition>
