@@ -8,14 +8,22 @@
 
 	<ui:define name="content">
 
-		 <p:panel header="CADASTRO DE USUÁRIO">		 
+		 <p:panel header="CADASTRO DE USUÁRIO" >		 
 		   <p:dataTable value="#{usuarioController.listaUsuarios}" var="u">
 		     <p:column headerText="Nome">
 				<h:outputText value="#{u.nome}"/>
 			</p:column>
+		     <p:column headerText="Email">
+				<h:outputText value="#{u.email}"/>
+			</p:column>
+		     <p:column headerText="Perfil">
+				<h:outputText value="#{u.perfil}"/>
+			</p:column>
+		     <p:column headerText="Status">
+				<h:outputText value="#{u.flAtivo}"/>
+			</p:column>
 		   </p:dataTable>
 		 </p:panel>
-
 
 	</ui:define>
 </ui:composition>
