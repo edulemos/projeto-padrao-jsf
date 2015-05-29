@@ -8,8 +8,9 @@
 
 	<ui:define name="content">
 
-		 <p:panel header="CADASTRO DE USUÁRIO" >		 
-		   <p:dataTable value="#{usuarioController.listaUsuarios}" var="u">
+	<p:panel header="CADASTRO DE USUÁRIO">		 
+		<h:form>
+		   <p:dataTable value="#{usuarioController.listaUsuarios}" var="u" id="table-user">
 		     <p:column headerText="Nome">
 				<h:outputText value="#{u.nome}"/>
 			</p:column>
@@ -23,7 +24,8 @@
 				<h:outputText value="#{u.flAtivo}"/>
 			</p:column>
 		   </p:dataTable>
-		 </p:panel>
-
+		</h:form>
+    </p:panel>
+		 
 	</ui:define>
 </ui:composition>

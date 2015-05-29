@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/layout.xhtml">
+
+	<ui:define name="content">
+	
+ <p:panel header="#{usuarioController.usuario.id == null ? 'CADASTRAR USUÁRIO' : 'EDITAR USUÁRIO'}">
+ <h:form id="usuario-form">
+ 		 
+<p:panelGrid>
+	
+	<p:row>
+	
+	 <p:column>
+		  <p:outputLabel value="Nome" for="Nome"/>
+     </p:column>
+     
+	 <p:column>
+		  <p:inputText value="#{usuarioController.usuario.nome}" id="Nome" required="true"  size="50"/>
+     </p:column>
+     
+      <p:column>
+		<p:outputLabel value="Perfil" for="Perfil"/>
+	   </p:column>
+	   
+	   <p:column>
+		<p:selectOneMenu  value="#{usuarioController.usuario.perfil}" id="Perfil" required="true" style="width:250px!important;">
+		    <f:selectItem itemLabel="- Selecione -" itemValue="" />
+		    <f:selectItem  itemValue="ADMIN" itemLabel="ADMINISTRADOR"/>
+		    <f:selectItem  itemValue="USER" itemLabel="USUÁRIO"/>
+		</p:selectOneMenu>
+	   </p:column>
+      
+	</p:row>
+	
+	<p:row>
+	
+ 	 <p:column>
+		<p:outputLabel value="Email" for="Email" />
+	 </p:column>
+	 <p:column>
+		<p:inputText value="#{usuarioController.usuario.email}" id="Email" required="true" size="50"/>
+	 </p:column>
+	   
+     <p:column>
+		<p:outputLabel value="Status" for="Status"/>
+	 </p:column>
+     <p:column>
+		<p:selectOneMenu  value="#{usuarioController.usuario.flAtivo}" id="Status" required="true" style="width:250px!important;">
+		    <f:selectItem itemLabel="- Selecione -" itemValue="" />
+			<f:selectItem  itemValue="S" itemLabel="Ativo" />
+			<f:selectItem  itemValue="N" itemLabel="Inativo" />
+		</p:selectOneMenu>
+     </p:column>
+     
+	</p:row>
+			
+	<p:row rendered="#{usuarioController.usuario.id == null}">
+	   <p:column>
+	    <p:outputLabel value="Senha" for="Senha"/>
+	   </p:column>
+	   <p:column>
+		<p:password value="#{usuarioController.usuario.senha}" validatorMessage="Os campos Senha e Confirma Senha devem ser iguais" id="Senha" match="ConfirmaSenha" required="true"  size="50"  feedback="true" promptLabel="Digite a senha" weakLabel="Força da senha : Fraca"   
+					goodLabel="Força da senha : Média" strongLabel="Força da senha : Forte"/>
+	   </p:column>
+	   <p:column>
+		<p:outputLabel value="Confirma Senha" for="ConfirmaSenha"/>
+	   </p:column>
+	   <p:column>
+		<p:password value="#{usuarioController.usuario.senha}" id="ConfirmaSenha"  required="true" size="50"/>
+	   </p:column>
+	</p:row>	
+	
+	</p:panelGrid>	
+	
+	<p:toolbar>
+		 <f:facet name="left">
+			<p:commandButton value="Salvar" action="#{usuarioController.salvar()}" />
+			<p:commandButton value="Voltar" action="usuarioList" />
+		 </f:facet>
+	</p:toolbar>
+		   
+   </h:form>
+ </p:panel>
+
+	</ui:define>
+</ui:composition>

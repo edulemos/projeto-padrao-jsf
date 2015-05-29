@@ -5,22 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<style>
-		.ui-layout-west {
-			z-index: 20 !important;
-			overflow: visible !important;;
-		}
-		
-		.ui-layout-west .ui-layout-unit-content {
-			overflow: visible !important;
-		}
-		
-		ul.ui-menu-child {
-		    white-space: nowrap;
-		    width: auto !important;
-		    min-width: 100px;
-		}
-	</style>
+	
 
 	<h:form>
 		<p:menu id="menu" toggleable="true">
@@ -29,7 +14,7 @@
 				<p:menuitem value="CONSOLE H2" url="/console" target="_blank"/>		
 			</p:submenu>
 			<p:submenu label="CADASTRO">
-				<p:menuitem value="Usuário" action="/pages/usuario/usuario_list.xhtml"/>		
+				<p:menuitem value="USUÁRIOS SISTEMA" action="/pages/usuario/usuarioList.xhtml"/>		
 			</p:submenu>
 		</p:menu>
 	</h:form>
