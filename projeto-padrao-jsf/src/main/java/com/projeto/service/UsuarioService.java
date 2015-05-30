@@ -41,4 +41,19 @@ public class UsuarioService implements Serializable {
 		dao.listar(Usuario.class);
 	}
 
+	public void excluirUsuario(Usuario usuario) {
+		dao.excluir(usuario);
+	}
+
+	public void salvar(Usuario usuario) {
+		
+		if(null != usuario.getId()){
+			dao.alterar(usuario);
+		}else{
+			usuario.setSenha(encrypt(usuario.getSenha()));
+			dao.incluir(usuario);
+		}
+		
+	}
+
 }

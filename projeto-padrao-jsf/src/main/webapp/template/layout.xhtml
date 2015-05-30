@@ -27,13 +27,13 @@
 
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north" size="100" style="height:50px;!important;">
+		<p:layoutUnit position="north">
 			<ui:insert name="top">
 				<ui:include src="/template/header.xhtml" />
 			</ui:insert>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" style="padding-top:5px;">
+		<p:layoutUnit position="west">
 			<ui:insert name="leftMenu">
 			   <ui:include src="/template/menu.xhtml" />
 			</ui:insert>
@@ -43,7 +43,7 @@
 			<ui:insert name="content" />
 		</p:layoutUnit>
 
-		<p:layoutUnit position="south" style="border:0px;">
+		<p:layoutUnit position="south">
 			<ui:insert name="footer">
 				<ui:include src="/template/footer.xhtml" />
 			</ui:insert>

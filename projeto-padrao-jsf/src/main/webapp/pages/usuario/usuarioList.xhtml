@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/layout.xhtml">
+
+	<ui:define name="content">
+	
+	<style>
+			.ui-dialog .ui-dialog-titlebar{
+				background: #428bca !important;
+			}
+			
+			.ui-datepicker-header{
+				background: #428bca !important;
+			}
+			
+			.ui-datepicker th {
+				background: #428bca !important;
+			}
+			
+			.ui-dialog .ui-dialog-title {
+				color:white;
+				font-weight: bold; 
+			}
+		</style>
+
+	<p:panel header="CADASTRO DE USUÁRIO">		 
+		<h:form id="form-usuario">
+		
+		   <p:dataTable value="#{usuarioController.listaUsuarios}" var="u" id="table-user">
+		     <p:column headerText="Nome">
+				<h:outputText value="#{u.nome}"/>
+			</p:column>
+		     <p:column headerText="Email">
+				<h:outputText value="#{u.email}"/>
+			</p:column>
+		     <p:column headerText="Perfil">
+				<h:outputText value="#{u.perfil}"/>
+			</p:column>
+		     <p:column headerText="Status">
+				<h:outputText value="#{u.flAtivo}"/>
+			</p:column>
+		    <p:column headerText="Ações">
+    			<p:commandButton title="Editar" icon="ui-icon-pencil" oncomplete="PF('dlg2').show();" action="#{usuarioController.selecionaUsuario(u)}" update=":form-usuario:modal"/>
+			</p:column>
+		   </p:dataTable>
+		   
+   <p:dialog header="Modal Dialog" widgetVar="dlg2"   id="modal" styleClass="customDialog" resizable="false" >
+		   
+    		<p:panelGrid>
+	
+	<p:row>
+	 <p:column>
+		  <p:outputLabel value="Nome" for="Nome"/>
+     </p:column>
+	 <p:column>
+		  <p:inputText value="#{usuarioController.usuario.nome}" id="Nome"   size="50"/>
+     </p:column>
+	</p:row>
+	
+	<p:row>
+      <p:column>
+		<p:outputLabel value="Perfil" for="Perfil"/>
+	   </p:column>
+	   <p:column>
+		<p:selectOneMenu  value="#{usuarioController.usuario.perfil}" id="Perfil"  style="width:250px!important;">
+		    <f:selectItem itemLabel="- Selecione -" itemValue="" />
+		    <f:selectItem  itemValue="ADMIN" itemLabel="ADMINISTRADOR"/>
+		    <f:selectItem  itemValue="USER" itemLabel="USUÁRIO"/>
+		</p:selectOneMenu>
+	   </p:column>
+	</p:row>
+	
+	<p:row>
+ 	 <p:column>
+		<p:outputLabel value="Email" for="Email" />
+	 </p:column>
+	 <p:column>
+		<p:inputText value="#{usuarioController.usuario.email}" id="Email"  size="50"/>
+	 </p:column>
+	</p:row>
+	
+	<p:row>
+     <p:column>
+		<p:outputLabel value="Status" for="Status"/>
+	 </p:column>
+     <p:column>
+		<p:selectOneMenu  value="#{usuarioController.usuario.flAtivo}" id="Status"  style="width:250px!important;">
+		    <f:selectItem itemLabel="- Selecione -" itemValue="" />
+			<f:selectItem  itemValue="S" itemLabel="Ativo" />
+			<f:selectItem  itemValue="N" itemLabel="Inativo" />
+		</p:selectOneMenu>
+     </p:column>
+	</p:row>
+			
+	<p:row rendered="#{usuarioController.usuario.id == null}">
+	   <p:column>
+	    <p:outputLabel value="Senha" for="Senha"/>
+	   </p:column>
+	   <p:column>
+		<p:password value="#{usuarioController.usuario.senha}" validatorMessage="Os campos Senha e Confirma Senha devem ser iguais" id="Senha" match="ConfirmaSenha"   size="50"  feedback="true" promptLabel="Digite a senha" weakLabel="Força da senha : Fraca"   
+					goodLabel="Força da senha : Média" strongLabel="Força da senha : Forte"/>
+	   </p:column>
+	</p:row>	
+	<p:row rendered="#{usuarioController.usuario.id == null}">
+	   <p:column>
+		<p:outputLabel value="Confirma Senha" for="ConfirmaSenha"/>
+	   </p:column>
+	   <p:column>
+		<p:password value="#{usuarioController.usuario.senha}" id="ConfirmaSenha"  size="50"/>
+	   </p:column>
+	</p:row>	
+	
+	</p:panelGrid>	
+    		
+		   </p:dialog>
+		      
+		</h:form>
+    </p:panel>
+		 
+	</ui:define>
+</ui:composition>
