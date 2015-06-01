@@ -1,0 +1,34 @@
+.ui-dialog .ui-dialog-titlebar {
+	background:  #EBEDF0 !important;
+}
+
+.ui-datepicker-header {
+	background:  #EBEDF0 !important;
+}
+
+.ui-datepicker th {
+	background:  #EBEDF0 !important;
+}
+
+.ui-dialog .ui-dialog-title {
+	color: black;
+	font-weight: bold;
+}
+
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+.ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap,
+	.ui-layout-bd, .ui-layout-hd {
+	border: none;
+}
+
+.ui-layout-unit .ui-layout-unit-content {
+	border: 0px none;
+}
