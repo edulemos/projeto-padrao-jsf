@@ -7,28 +7,18 @@
 	template="/template/layout.xhtml">
 
 	<ui:define name="content">
-	
-	<style>
-			.ui-dialog .ui-dialog-titlebar{
-				background: #428bca !important;
-			}
-			
-			.ui-datepicker-header{
-				background: #428bca !important;
-			}
-			
-			.ui-datepicker th {
-				background: #428bca !important;
-			}
-			
-			.ui-dialog .ui-dialog-title {
-				color:white;
-				font-weight: bold; 
-			}
-		</style>
 
 	<p:panel header="CADASTRO DE USUÁRIO">		 
 		<h:form id="form-usuario">
+		
+		<p:toolbar>
+		
+		  <f:facet name="LEFT">
+		    <p:commandButton onclick="PF('dlg2').show();" value="NOVO" icon=" ui-icon-circle-plus"/>
+		  </f:facet>
+		  
+		
+		</p:toolbar>
 		
 		   <p:dataTable value="#{usuarioController.listaUsuarios}" var="u" id="table-user">
 		     <p:column headerText="Nome">
@@ -48,76 +38,9 @@
 			</p:column>
 		   </p:dataTable>
 		   
-   <p:dialog header="Modal Dialog" widgetVar="dlg2"   id="modal" styleClass="customDialog" resizable="false" >
+		   <ui:include src="/pages/usuario/usuarioForm.xhtml" />
 		   
-    		<p:panelGrid>
-	
-	<p:row>
-	 <p:column>
-		  <p:outputLabel value="Nome" for="Nome"/>
-     </p:column>
-	 <p:column>
-		  <p:inputText value="#{usuarioController.usuario.nome}" id="Nome"   size="50"/>
-     </p:column>
-	</p:row>
-	
-	<p:row>
-      <p:column>
-		<p:outputLabel value="Perfil" for="Perfil"/>
-	   </p:column>
-	   <p:column>
-		<p:selectOneMenu  value="#{usuarioController.usuario.perfil}" id="Perfil"  style="width:250px!important;">
-		    <f:selectItem itemLabel="- Selecione -" itemValue="" />
-		    <f:selectItem  itemValue="ADMIN" itemLabel="ADMINISTRADOR"/>
-		    <f:selectItem  itemValue="USER" itemLabel="USUÁRIO"/>
-		</p:selectOneMenu>
-	   </p:column>
-	</p:row>
-	
-	<p:row>
- 	 <p:column>
-		<p:outputLabel value="Email" for="Email" />
-	 </p:column>
-	 <p:column>
-		<p:inputText value="#{usuarioController.usuario.email}" id="Email"  size="50"/>
-	 </p:column>
-	</p:row>
-	
-	<p:row>
-     <p:column>
-		<p:outputLabel value="Status" for="Status"/>
-	 </p:column>
-     <p:column>
-		<p:selectOneMenu  value="#{usuarioController.usuario.flAtivo}" id="Status"  style="width:250px!important;">
-		    <f:selectItem itemLabel="- Selecione -" itemValue="" />
-			<f:selectItem  itemValue="S" itemLabel="Ativo" />
-			<f:selectItem  itemValue="N" itemLabel="Inativo" />
-		</p:selectOneMenu>
-     </p:column>
-	</p:row>
-			
-	<p:row rendered="#{usuarioController.usuario.id == null}">
-	   <p:column>
-	    <p:outputLabel value="Senha" for="Senha"/>
-	   </p:column>
-	   <p:column>
-		<p:password value="#{usuarioController.usuario.senha}" validatorMessage="Os campos Senha e Confirma Senha devem ser iguais" id="Senha" match="ConfirmaSenha"   size="50"  feedback="true" promptLabel="Digite a senha" weakLabel="Força da senha : Fraca"   
-					goodLabel="Força da senha : Média" strongLabel="Força da senha : Forte"/>
-	   </p:column>
-	</p:row>	
-	<p:row rendered="#{usuarioController.usuario.id == null}">
-	   <p:column>
-		<p:outputLabel value="Confirma Senha" for="ConfirmaSenha"/>
-	   </p:column>
-	   <p:column>
-		<p:password value="#{usuarioController.usuario.senha}" id="ConfirmaSenha"  size="50"/>
-	   </p:column>
-	</p:row>	
-	
-	</p:panelGrid>	
-    		
-		   </p:dialog>
-		      
+   		      
 		</h:form>
     </p:panel>
 		 
