@@ -31,6 +31,10 @@ public class UsuarioController extends JsfUtil implements Serializable {
 		listaUsuarios = service.listar();
 	}
 	
+	public void salvar(){
+		
+	}
+	
 	public void selecionaUsuario(Usuario usuario){
 		this.usuario = usuario;
 	}
