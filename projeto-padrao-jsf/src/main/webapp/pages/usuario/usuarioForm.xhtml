@@ -5,7 +5,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
- <p:dialog header="#{usuarioController.usuario.id == null ? 'CADASTRAR USUÁRIO' : 'EDITAR USUÁRIO '}" widgetVar="dlg2"   id="modal" >
+ <p:dialog position="bottom" header="#{usuarioController.usuario.id == null ? 'CADASTRAR USUÁRIO' : 'EDITAR USUÁRIO '}" widgetVar="dlg2" id="modal" >
+		   
+   <p:messages id="msg1"/>
 		   
 		<p:panelGrid>
 	
@@ -14,7 +16,7 @@
 		  <p:outputLabel value="Nome" for="Nome"/>
      </p:column>
 	 <p:column>
-		  <p:inputText value="#{usuarioController.usuario.nome}" id="Nome"   size="50"/>
+		  <p:inputText value="#{usuarioController.usuario.nome}" id="Nome" size="50"/>
      </p:column>
 	</p:row>
 	<p:row>
@@ -66,16 +68,15 @@
 	   <p:column>
 		<p:password value="#{usuarioController.usuario.senha}" id="ConfirmaSenha"  size="50"/>
 	   </p:column>
-	</p:row>	
+	</p:row>
+	<p:row>
+		<p:column colspan="2">
+			<p:commandButton value="Salvar" actionListener="#{usuarioController.salvar()}" oncomplete="if (!#{usuarioController.error}) PF('dlg2').hide();" update="table-user, msg1"/> 
+	    </p:column>
+	</p:row>		
 	
 	</p:panelGrid>
-	
-	<p:toolbar>
-		<f:facet name="LEFT">
-			<p:commandButton value="Salvar" action="#{usuarioController.salvar()}"/> 
-		</f:facet>
-	</p:toolbar>	
-    		
+			
   </p:dialog>
 
 </ui:composition>

@@ -1,5 +1,7 @@
 package com.projeto.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -24,6 +26,17 @@ public class UsuarioDAO extends GenericDAO<Usuario>{
 					.setParameter("prm1", usuario.getNome())
 					.setParameter("prm2", usuario.getSenha());
 			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	public List<Usuario> pesquisar(Usuario usuario) {
+		try {
+			String jpql = "from Usuario where nome = :prm1";
+			TypedQuery<Usuario> query = manager.createQuery(jpql, Usuario.class)
+					.setParameter("prm1", usuario.getNome());
+			return query.getResultList();
 		} catch (NoResultException e) {
 			return null;
 		}
