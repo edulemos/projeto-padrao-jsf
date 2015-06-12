@@ -18,7 +18,6 @@ import com.projeto.util.JsfUtil;
 public class UsuarioController extends JsfUtil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private boolean isError;
 	private List<Usuario> listaUsuarios;
 
 	@Inject
@@ -37,19 +36,17 @@ public class UsuarioController extends JsfUtil implements Serializable {
 			service.salvar(usuario);
 			listaUsuarios = service.listar();
 			addInfoMessage("Usuário salvo com sucesso.");
-			isError = false;
 		} catch (NegocioException e) {
-			isError = true;
 			addNegocioException(e);
 		} catch (Exception e) {
 			addErrorMessage(e.getMessage());
 		}
 	}
 
-	public void pesquisar() {
-		listaUsuarios = service.pesquisar(usuario);
+	public void novo() {
+		usuario = new Usuario();
 	}
-
+	
 	public void excluir(Usuario usuario) {
 		service.excluir(usuario);
 		listaUsuarios = service.listar();
@@ -74,14 +71,6 @@ public class UsuarioController extends JsfUtil implements Serializable {
 
 	public void setListaUsuarios(List<Usuario> listaUsuarios) {
 		this.listaUsuarios = listaUsuarios;
-	}
-
-	public boolean isError() {
-		return isError;
-	}
-
-	public void setError(boolean isError) {
-		this.isError = isError;
 	}
 
 }

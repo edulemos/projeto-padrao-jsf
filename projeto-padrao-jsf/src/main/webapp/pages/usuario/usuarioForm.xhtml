@@ -5,11 +5,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
- <p:dialog position="bottom" header="#{usuarioController.usuario.id == null ? 'CADASTRAR USUÁRIO' : 'EDITAR USUÁRIO '}" widgetVar="dlg2" id="modal" >
+ <p:dialog position="center" header="#{usuarioController.usuario.id == null ? 'CADASTRAR USUÁRIO' : 'EDITAR USUÁRIO '}" widgetVar="dlg2" id="modal" >
 		   
-   <p:messages id="msg1"/>
-		   
-		<p:panelGrid>
+<p:panelGrid>
 	
 	<p:row>
 	 <p:column>
@@ -71,7 +69,7 @@
 	</p:row>
 	<p:row>
 		<p:column colspan="2">
-			<p:commandButton value="Salvar" actionListener="#{usuarioController.salvar()}" oncomplete="if (!#{usuarioController.error}) PF('dlg2').hide();" update="table-user, msg1"/> 
+			<p:commandButton value="Salvar" actionListener="#{usuarioController.salvar}" oncomplete="PF('dlg2').hide();" update="table-user"/> 
 	    </p:column>
 	</p:row>		
 	

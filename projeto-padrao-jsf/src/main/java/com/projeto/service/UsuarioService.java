@@ -60,10 +60,6 @@ public class UsuarioService implements Serializable {
 
 	}
 
-	public List<Usuario> pesquisar(Usuario usuario) {
-		return dao.pesquisar(usuario);
-	}
-
 	private void validar(Usuario usuario) throws NegocioException {
 		List<String> erros = new ArrayList<String>();
 

@@ -9,26 +9,20 @@
 <ui:define name="content">
 
 	<p:panel header="CADASTRO DE USUÁRIO">
-	   <p:messages id="msg"/>
+	   <p:messages autoUpdate="true" closable="true"/>
 			 
 		<h:form id="form-usuario">
 		
 			<p:toolbar>
 			 <f:facet name="left">
-				<p:commandButton value="NOVO" onclick="PF('dlg2').show();" icon="ui-icon-circle-plus"/>
-			 </f:facet>
-	         <f:facet name="right">
-				<p:outputLabel value="Pesquisar: "/>
-				<p:inputText value="#{usuarioController.usuario.nome}" placeholder="Nome ou CPF"/>
-		        <p:spacer width="5"/>
-				<p:commandButton action="#{usuarioController.pesquisar()}" icon="ui-icon-search" update="table-user"/>
-			 </f:facet>
+				<p:commandButton value="NOVO" oncomplete="PF('dlg2').show();" icon="ui-icon-circle-plus" actionListener="#{usuarioController.novo}" update="form-usuario:modal"/>
+			 </f:facet>	      
 			</p:toolbar>
 			
 			<p:spacer height="10"/>
 			
-		   <p:dataTable value="#{usuarioController.listaUsuarios}" var="u" id="table-user">
-		     <p:column headerText="Nome">
+		   <p:dataTable value="#{usuarioController.listaUsuarios}" var="u" id="table-user" widgetVar="carsTable">
+		     <p:column headerText="Nome" filterBy="#{u.nome}">
 				<h:outputText value="#{u.nome}"/>
 			</p:column>
 		     <p:column headerText="Email">
@@ -41,9 +35,9 @@
 				<h:outputText value="#{u.flAtivo == 'S' ? 'ATIVO' : 'INATIVO'}"/>
 			</p:column>
 		    <p:column headerText="Ações" style="width:10%;text-align:center;">
-	   			<p:commandButton title="Editar" icon="ui-icon-pencil" oncomplete="PF('dlg2').show();" action="#{usuarioController.selecionaUsuario(u)}" update=":form-usuario:modal, msg"/>
+	   			<p:commandButton title="Editar" icon="ui-icon-pencil" oncomplete="PF('dlg2').show();" action="#{usuarioController.selecionaUsuario(u)}" update=":form-usuario:modal"/>
 	   			<p:spacer width="10px;" />
-				<p:commandButton title="Excluir" icon="ui-icon-trash" action="#{usuarioController.excluir(u)}" update="table-user, msg"  onclick="return confirm('Confirma a exclusão do Usuário #{u.nome} ?');"/>
+				<p:commandButton title="Excluir" icon="ui-icon-trash" action="#{usuarioController.excluir(u)}" update="table-user"  onclick="return confirm('Confirma a exclusão do Usuário #{u.nome} ?');"/>
 			</p:column>
 		   </p:dataTable>
 			   
