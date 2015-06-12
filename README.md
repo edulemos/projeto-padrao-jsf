@@ -4,7 +4,7 @@
 ### Tecnologias:
  
  * eclipse
- * tomcat 7
+ * tomcat 
  * jsf 2.2
  * primefaces 5
  * hibernate
@@ -13,13 +13,14 @@
  
 ### Configurado:
  
+ * jpa persistence unit
  * configurações pom
  * template facelet
  * primefaces layout
- * jpa persistence unit
- * tela login
- * tela inicial
  * banco H2
+ * tela inicial
+ * tela login
+ * cadastro de usuarios
  
 
 
