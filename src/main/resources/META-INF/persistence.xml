@@ -15,7 +15,6 @@
 			<property name="hibernate.show_sql" value="true" />
 <!-- 			<property name="hibernate.format_sql" value="true" /> -->
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
-<!-- 			<property name="hibernate.hbm2ddl.import_files" value="/META-INF/script.sql" /> -->
 		</properties>
 	</persistence-unit>
 
