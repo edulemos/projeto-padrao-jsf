@@ -15,9 +15,10 @@ projeto jsf configurado
   
 ### Caracteristicas:
  
- * template richfaces/booststrap
- * tela inicial
+ * template richfaces/booststrap 
  * tela login
+ * recuperar senha
+ * envio de email
  * cadastro de usuarios
  
 
