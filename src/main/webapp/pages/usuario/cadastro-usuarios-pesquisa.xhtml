@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j">
+
+	<rich:panel styleClass="contentPanel">
+
+		<f:facet name="header">
+			<h:outputText value="USUÁRIOS SISTEMA" />
+		</f:facet>
+
+		<h:messages style="font-weight: bold;text-transform: uppercase;" styleClass="table" layout="table" infoClass="alert alert-info"
+			errorClass="alert alert-danger" warnClass="alert alert-warning" />
+
+		<div class="row">
+			<div class="form-group col-md-4">
+				<h:outputLabel value="Email:" />
+				<h:inputText value="#{usuarioController.filtroPesquisa.email}" styleClass="form-control" />
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-4">
+				<h:outputLabel value="Nome:" />
+				<h:inputText value="#{usuarioController.filtroPesquisa.name}" styleClass="form-control" />
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-2">
+				<a4j:commandButton value="Pesquisar" action="#{usuarioController.pesquisar()}" styleClass="form-control" render="@form" />
+			</div>
+			<div class="form-group col-md-2">
+				<a4j:commandButton action="#{usuarioController.formulario(usuarioController.usuario)}" value="Cadastrar" styleClass="form-control" render="@form">
+					<a4j:param assignTo="#{usuarioController.acao}" value="formulario" />
+				</a4j:commandButton>
+			</div>
+		</div>
+
+
+		<rich:dataTable id="user-table" value="#{usuarioController.listaUsuarios}" var="user" styleClass="table"
+			rendered="#{not empty usuarioController.listaUsuarios}">
+
+			<rich:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{user.id}" />
+			</rich:column>
+
+			<rich:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{user.name}" />
+			</rich:column>
+
+			<rich:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputText value="#{user.email}" />
+			</rich:column>
+
+			<rich:column style="text-align:center">
+				<f:facet name="header">Ações</f:facet>
+
+				<a4j:commandLink action="#{usuarioController.formulario(user)}" render="@all" style="margin-right:20px;">
+					<a4j:param assignTo="#{usuarioController.acao}" value="formulario" />
+					<span class="glyphicon glyphicon-pencil"></span>
+					<rich:tooltip layout="block" followMouse="true" value="Alterar usuário" />
+				</a4j:commandLink>
+
+				<a4j:commandLink action="#{usuarioController.excluir(user)}" onclick="return confirm('Confirma a exclusão do usário #{user.name}?');"
+					render="@all">
+					<span class="glyphicon glyphicon-trash"></span>
+					<rich:tooltip layout="block" followMouse="true" value="Excluir usuário" />
+				</a4j:commandLink>
+
+			</rich:column>
+
+		</rich:dataTable>
+
+	</rich:panel>
+
+
+
+</ui:composition>

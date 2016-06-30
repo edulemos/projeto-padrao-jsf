@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j"
+	template="/template/layout.xhtml">
+
+	<ui:define name="content">
+	
+	<h:form id="form-cadastro-usuarios" prependId="false">
+
+		<a4j:region rendered="#{usuarioController.acao == 'pesquisar'}">
+			<ui:include src="/pages/usuario/cadastro-usuarios-pesquisa.xhtml" />
+		</a4j:region>
+		
+		<a4j:region rendered="#{usuarioController.acao == 'formulario'}">
+			<ui:include src="/pages/usuario/cadastro-usuarios-formulario.xhtml" />
+		</a4j:region>
+
+	</h:form>
+	
+	</ui:define>
+</ui:composition>

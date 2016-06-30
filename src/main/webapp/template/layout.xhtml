@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j">
+
+<f:view contentType="text/html" locale="pt_BR">
+
+
+	<h:head>
+		<title>Projeto Padrão Richfaces</title>
+		<link rel="stylesheet" type="text/css"  href="#{request.contextPath}/resources/css/bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="style.css" />
+	</h:head>
+
+	<h:body>
+		<div class="container-fluid ">
+
+			<div class="row">
+				<div class="col-md-12">
+					<ui:include src="/template/header.xhtml" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-3">
+					<ui:insert name="leftMenu">
+						<ui:include src="/template/menu.xhtml" />
+					</ui:insert>
+				</div>
+
+				<div class="col-md-9">
+					<ui:insert name="content" />
+				</div>
+			</div>
+
+			<div class="row">
+				<ui:insert name="footer">
+					<ui:include src="/template/footer.xhtml" />
+				</ui:insert>
+			</div>
+
+		</div>
+
+	</h:body>
+
+</f:view>
+</html>

@@ -4,20 +4,16 @@
 ### Tecnologias:
  
  * eclipse
- * tomcat 
+ * tomcat 8
  * jsf 2.2
- * primefaces 5
+ * richfaces 4
  * hibernate
  * maven
  * cdi
  
-### Configurado:
+### Caracteristicas:
  
- * jpa persistence unit
- * configurações pom
- * template facelet
- * primefaces layout
- * banco H2
+ * template richfaces/booststrap
  * tela inicial
  * tela login
  * cadastro de usuarios
