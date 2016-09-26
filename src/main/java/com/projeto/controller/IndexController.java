@@ -43,7 +43,7 @@ public class IndexController extends JsfUtil implements Serializable {
 			return "pages/home?faces-redirect=true";
 		} catch (Exception e) {
 			tratarErro(e);
-			return "";
+			return "/login";
 		}
 	}
 
@@ -65,7 +65,7 @@ public class IndexController extends JsfUtil implements Serializable {
 		} catch (Exception e) {
 			tratarErro(e);
 		}
-		return "";
+		return "/cadastro";
 	}
 
 	public void recuperarSenha() {

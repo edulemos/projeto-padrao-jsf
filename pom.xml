@@ -6,15 +6,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>PrimeFaces Maven Repository</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-
 	<dependencies>
 
 		<!-- SERVLET -->
@@ -24,17 +15,17 @@
 			<version>3.0.1</version>
 		</dependency>
 
-		<!-- JSF IMPL -->
+		<!-- JSF CORE -->
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
 			<version>2.2.11</version>
 		</dependency>
 
-		<!-- JSF API -->
+		<!-- JSF IMPL -->
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-impl</artifactId>
 			<version>2.2.11</version>
 		</dependency>
 
@@ -98,7 +89,7 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>
