@@ -4,18 +4,18 @@
 	template="/template/layout.xhtml">
 
 	<ui:define name="content">
-	
-	<h:form id="form-cadastro-usuarios" prependId="false">
 
-		<a4j:region rendered="#{usuarioController.acao == 'pesquisar'}">
-			<ui:include src="/pages/usuario/cadastro-usuarios-pesquisa.xhtml" />
-		</a4j:region>
-		
-		<a4j:region rendered="#{usuarioController.acao == 'formulario'}">
-			<ui:include src="/pages/usuario/cadastro-usuarios-formulario.xhtml" />
-		</a4j:region>
+		<h:form id="cadastro-usuarios" prependId="false">
 
-	</h:form>
-	
+			<a4j:region rendered="#{usuarioController.acao == 'pesquisar'}">
+				<ui:include src="/pages/usuario/cadastro-usuarios-pesquisa.xhtml" />
+			</a4j:region>
+			
+			<a4j:region rendered="#{usuarioController.acao == 'formulario'}">
+				<ui:include src="/pages/usuario/cadastro-usuarios-formulario.xhtml" />
+			</a4j:region>
+			
+		</h:form>
+
 	</ui:define>
 </ui:composition>

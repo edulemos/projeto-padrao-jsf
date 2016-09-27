@@ -10,15 +10,17 @@
 
 		<h:form>
 
-			<rich:panelMenu groupExpandedLeftIcon="triangleUp" groupCollapsedLeftIcon="triangleDown" topGroupExpandedRightIcon="chevronUp"
-				topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc" itemMode="server">
+			<rich:panelMenu style="width:200px" itemMode="ajax" groupMode="ajax" groupExpandedLeftIcon="triangleUp" 
+							groupCollapsedLeftIcon="triangleDown" 	topGroupExpandedRightIcon="chevronUp" 
+							 topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc"
+								itemChangeListener="#{panelMenuBean.updateCurrent}">
 
 				<rich:panelMenuGroup label="ADMINISTRADOR">
-				
+
 					<rich:panelMenuItem label="USUÁRIOS SISTEMA" action="/pages/usuario/cadastro-usuarios.xhtml">
 						<f:param name="acao" value="pesquisar" />
 					</rich:panelMenuItem>
-					
+
 					<rich:panelMenuItem label="Item 1.2" name="Item_1_2" />
 					<rich:panelMenuItem label="Item 1.3" name="Item_1_3" />
 				</rich:panelMenuGroup>

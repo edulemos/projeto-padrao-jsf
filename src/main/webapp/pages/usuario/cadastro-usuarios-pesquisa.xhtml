@@ -13,15 +13,15 @@
 
 		<div class="row">
 			<div class="form-group col-md-4">
-				<h:outputLabel value="Email:" />
-				<h:inputText value="#{usuarioController.filtroPesquisa.email}" styleClass="form-control" />
+				<h:outputLabel value="Email:" for="email_pesq" />
+				<h:inputText id="email_pesq" value="#{usuarioController.filtroPesquisa.email}" styleClass="form-control" />
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="form-group col-md-4">
-				<h:outputLabel value="Nome:" />
-				<h:inputText value="#{usuarioController.filtroPesquisa.name}" styleClass="form-control" />
+				<h:outputLabel value="Nome:" for="nome_pesq" />
+				<h:inputText id="nome_pesq" value="#{usuarioController.filtroPesquisa.name}" styleClass="form-control" />
 			</div>
 		</div>
 
@@ -35,7 +35,6 @@
 				</a4j:commandButton>
 			</div>
 		</div>
-
 
 		<rich:dataTable id="user-table" value="#{usuarioController.listaUsuarios}" var="user" styleClass="table"
 			rendered="#{not empty usuarioController.listaUsuarios}">
@@ -58,16 +57,14 @@
 			<rich:column style="text-align:center">
 				<f:facet name="header">Ações</f:facet>
 
-				<a4j:commandLink action="#{usuarioController.formulario(user)}" render="@all" style="margin-right:20px;">
+				<a4j:commandLink action="#{usuarioController.formulario(user)}" render="@form" style="margin-right:20px;">
 					<a4j:param assignTo="#{usuarioController.acao}" value="formulario" />
 					<span class="glyphicon glyphicon-pencil"></span>
-					<rich:tooltip layout="block" followMouse="true" value="Alterar usuário" />
 				</a4j:commandLink>
 
 				<a4j:commandLink action="#{usuarioController.excluir(user)}" onclick="return confirm('Confirma a exclusão do usário #{user.name}?');"
 					render="@all">
 					<span class="glyphicon glyphicon-trash"></span>
-					<rich:tooltip layout="block" followMouse="true" value="Excluir usuário" />
 				</a4j:commandLink>
 
 			</rich:column>

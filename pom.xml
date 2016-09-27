@@ -15,25 +15,23 @@
 			<version>3.0.1</version>
 		</dependency>
 
-		<!-- JSF CORE -->
+		<!-- JSF -->
 		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-api</artifactId>
-			<version>2.2.11</version>
-		</dependency>
-
-		<!-- JSF IMPL -->
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.2.13</version>
+		</dependency>	
 		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-impl</artifactId>
-			<version>2.2.11</version>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.2.13</version>
 		</dependency>
 
 		<!-- RICHFACES -->
 		<dependency>
 			<groupId>org.richfaces</groupId>
 			<artifactId>richfaces</artifactId>
-			<version>4.5.16.Final</version>
+			<version>4.5.17.Final</version>
 		</dependency>
 
 		<!-- JSP -->
@@ -99,7 +97,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>jsf-base-project</finalName>
+		<finalName>jsf</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

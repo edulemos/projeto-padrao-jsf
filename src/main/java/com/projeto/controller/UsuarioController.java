@@ -30,15 +30,13 @@ public class UsuarioController extends JsfUtil implements Serializable {
 	private List<User> listaUsuarios;
 	private List<Role> rolesList;
 	private String perfilCadastro;
+	private User usuario = new User();
 
 	@Inject
 	UsuarioService service;
 
 	@Inject
 	User filtroPesquisa;
-
-	@Inject
-	User usuario;
 
 	@PostConstruct
 	public void iniciar() {
@@ -78,8 +76,13 @@ public class UsuarioController extends JsfUtil implements Serializable {
 
 	public String formulario(User user) {
 		try {
-			this.usuario = user;
-			rolesList = service.getRolesDisponiveiss(user);
+			if(null !=user){
+				this.usuario = user;
+				rolesList = service.getRolesDisponiveiss(user);	
+			}else{
+				user = new User();
+			}
+			
 		} catch (Exception e) {
 			tratarErro(e);
 		}
