@@ -2,85 +2,83 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j">
 
-  <div class="panel panel-primary content">
-			<div class="panel-heading">
-				<b>USUÁRIOS SISTEMA</b>
-			</div>
-
-			<div class="panel-body">
-			
-			
-		<h:messages style="font-weight: bold;text-transform: uppercase;" styleClass="table" layout="table" infoClass="alert alert-info"
-			errorClass="alert alert-danger" warnClass="alert alert-warning" />
-
-		<div class="row">
-			<div class="form-group col-md-4">
-				<h:outputLabel value="Email:" for="email_pesq" />
-				<h:inputText id="email_pesq" value="#{usuarioController.filtroPesquisa.email}" styleClass="form-control" />
-			</div>
+	<div class="panel panel-primary content">
+		<div class="panel-heading">
+			<b>USUÁRIOS SISTEMA</b>
 		</div>
 
-		<div class="row">
-			<div class="form-group col-md-4">
-				<h:outputLabel value="Nome:" for="nome_pesq" />
-				<h:inputText id="nome_pesq" value="#{usuarioController.filtroPesquisa.name}" styleClass="form-control" />
+		<div class="panel-body">
+
+
+			<h:messages style="font-weight: bold;text-transform: uppercase;" styleClass="table" layout="table" infoClass="alert alert-info"
+				errorClass="alert alert-danger" warnClass="alert alert-warning" />
+
+			<div class="row">
+				<div class="form-group col-md-4">
+					<h:outputLabel value="Email:" for="email_pesq" />
+					<h:inputText id="email_pesq" value="#{usuarioController.filtroPesquisa.email}" styleClass="form-control" />
+				</div>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="form-group col-md-2">
-				<a4j:commandButton value="Pesquisar" action="#{usuarioController.pesquisar()}" styleClass="form-control" render="@form" />
+			<div class="row">
+				<div class="form-group col-md-4">
+					<h:outputLabel value="Nome:" for="nome_pesq" />
+					<h:inputText id="nome_pesq" value="#{usuarioController.filtroPesquisa.name}" styleClass="form-control" />
+				</div>
 			</div>
-			<div class="form-group col-md-2">
-				<a4j:commandButton action="#{usuarioController.formulario(usuarioController.usuario)}" value="Cadastrar" styleClass="form-control" render="@form">
-					<a4j:param assignTo="#{usuarioController.acao}" value="formulario" />
-				</a4j:commandButton>
+
+			<div class="row">
+				<div class="form-group col-md-2">
+					<a4j:commandButton value="Pesquisar" action="#{usuarioController.pesquisar()}" styleClass="form-control" render="@form" />
+				</div>
+				<div class="form-group col-md-2">
+					<a4j:commandButton action="#{usuarioController.formulario(usuarioController.usuario)}" value="Cadastrar" styleClass="form-control" render="@form">
+						<a4j:param assignTo="#{usuarioController.acao}" value="formulario" />
+					</a4j:commandButton>
+				</div>
 			</div>
-		</div>
 
-		<rich:dataTable id="user-table" value="#{usuarioController.listaUsuarios}" var="user" styleClass="table"
-			rendered="#{not empty usuarioController.listaUsuarios}">
+			<h:dataTable id="user-table" value="#{usuarioController.listaUsuarios}" var="user" styleClass="table table-bordered table-striped"
+				rendered="#{not empty usuarioController.listaUsuarios}">
+				
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{user.name}" />
+				</h:column>
 
-			<rich:column>
-				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{user.id}" />
-			</rich:column>
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					<h:outputText value="#{user.email}" />
+				</h:column>
 
-			<rich:column>
-				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{user.name}" />
-			</rich:column>
+				<h:column>
+					<f:facet name="header">
+						<div align="center">Ações</div>
+					</f:facet>
+					<div align="center">
 
-			<rich:column>
-				<f:facet name="header">Email</f:facet>
-				<h:outputText value="#{user.email}" />
-			</rich:column>
+						<h:commandLink action="#{usuarioController.formulario(user)}" render="@form" style="margin-right:20px;">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</h:commandLink>
 
-			<rich:column style="text-align:center">
-				<f:facet name="header">Ações</f:facet>
+						<h:commandLink action="#{usuarioController.excluir(user)}" onclick="return confirm('Confirma a exclusão do usário #{user.name}?');"
+							render="@form">
+							<span class="glyphicon glyphicon-trash"></span>
+						</h:commandLink>
+					</div>
 
-				<a4j:commandLink action="#{usuarioController.formulario(user)}" render="@form" style="margin-right:20px;">
-					<a4j:param assignTo="#{usuarioController.acao}" value="formulario" />
-					<span class="glyphicon glyphicon-pencil"></span>
-				</a4j:commandLink>
+				</h:column>
 
-				<a4j:commandLink action="#{usuarioController.excluir(user)}" onclick="return confirm('Confirma a exclusão do usário #{user.name}?');"
-					render="@all">
-					<span class="glyphicon glyphicon-trash"></span>
-				</a4j:commandLink>
-
-			</rich:column>
-
-		</rich:dataTable>
-			
-			
-			</div>
+			</h:dataTable>
 
 
 		</div>
-  
 
-	
+
+	</div>
+
+
+
 
 
 </ui:composition>

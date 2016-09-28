@@ -23,10 +23,12 @@ import com.projeto.util.JsfUtil;
 public class UsuarioController extends JsfUtil implements Serializable {
 
 	private static final String PESQUISAR_USUARIOS = "pesquisar";
+	private static final String FORMULARIO_USUARIOS = "formulario";
 
 	final static Logger log = Logger.getLogger(UsuarioController.class);
 
 	private static final long serialVersionUID = 1L;
+
 	private List<User> listaUsuarios;
 	private List<Role> rolesList;
 	private String perfilCadastro;
@@ -82,7 +84,7 @@ public class UsuarioController extends JsfUtil implements Serializable {
 			}else{
 				user = new User();
 			}
-			
+			this.acao = FORMULARIO_USUARIOS;
 		} catch (Exception e) {
 			tratarErro(e);
 		}
