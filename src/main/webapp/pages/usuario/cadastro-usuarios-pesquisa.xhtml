@@ -2,12 +2,14 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j">
 
-	<rich:panel styleClass="contentPanel">
+  <div class="panel panel-primary content">
+			<div class="panel-heading">
+				<b>USUÁRIOS SISTEMA</b>
+			</div>
 
-		<f:facet name="header">
-			<h:outputText value="USUÁRIOS SISTEMA" />
-		</f:facet>
-
+			<div class="panel-body">
+			
+			
 		<h:messages style="font-weight: bold;text-transform: uppercase;" styleClass="table" layout="table" infoClass="alert alert-info"
 			errorClass="alert alert-danger" warnClass="alert alert-warning" />
 
@@ -70,9 +72,15 @@
 			</rich:column>
 
 		</rich:dataTable>
+			
+			
+			</div>
 
-	</rich:panel>
 
+		</div>
+  
+
+	
 
 
 </ui:composition>

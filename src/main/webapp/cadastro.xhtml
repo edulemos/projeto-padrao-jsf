@@ -12,17 +12,16 @@
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
-	<div class="container-fluid">
-		<div class="panel-group">
-			<div class="panel panel-primary ">
-				<ui:include src="/template/external-header.xhtml" />
-				<div class="panel-body" style="min-height: 500px;">
-
-					<rich:panel style="width: 400px" id="panelCadastro" >
-
-						<f:facet name="header">
-							<h:outputText value="CADASTRO" />
-						</f:facet>
+	
+	<ui:include src="/template/external-header.xhtml" />
+	
+	<div class="row">	
+		<div class="col-md-4">	
+		
+			<div class="panel panel-primary">
+				<div class="panel-heading"><b>CADASTRO</b></div>
+			
+				<div class="panel-body">
 						
 						<h:messages style="font-weight: bold;text-transform: uppercase;" styleClass="table" layout="table" infoClass="alert alert-info" errorClass="alert alert-danger" warnClass="alert alert-warning"/>						
 						
@@ -74,7 +73,7 @@
 						</h:form>
 
 
-					</rich:panel>
+					
 				</div>
 			</div>
 		</div>

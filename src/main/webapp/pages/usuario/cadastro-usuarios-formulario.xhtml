@@ -2,103 +2,110 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j">
 
-	<rich:panel styleClass="contentPanel">
 
-		<f:facet name="header">
-			<h:outputText value="#{null == usuarioController.usuario.id ? 'CADASTRAR USUÁRIO' : 'ALTERAR USUÁRIO'}" />
-		</f:facet>
-
-		<h:messages style="font-weight: bold;text-transform: uppercase;" styleClass="table" layout="table" infoClass="alert alert-info"
-			errorClass="alert alert-danger" warnClass="alert alert-warning" />
-
-		<div class="row">
-			<div class="form-group col-md-6">
-				<h:outputLabel for="name" value="Nome:" />
-				<h:inputText id="name" value="#{usuarioController.usuario.name}" required="true" requiredMessage="O Campo Nome e de preenchimento obrigatório"
-					styleClass="form-control" />
-			</div>
+	<div class="panel panel-primary content">
+		<div class="panel-heading">
+			<b><h:outputText value="#{null == usuarioController.usuario.id ? 'CADASTRAR USUÁRIO' : 'ALTERAR USUÁRIO'}" /></b>
 		</div>
 
-		<div class="row">
-			<div class="form-group col-md-6">
-				<h:outputLabel for="email" value="Email:" />
-				<h:inputText id="email" value="#{usuarioController.usuario.email}" required="true" requiredMessage="O Campo Email e de preenchimento obrigatório"
-					styleClass="form-control">
-					<f:validator validatorId="emailValidator" />
-				</h:inputText>
-			</div>
-		</div>
+		<div class="panel-body">
 
-		<a4j:region rendered="#{null == usuarioController.usuario.id}">
-		
+			<h:messages style="font-weight: bold;text-transform: uppercase;" styleClass="table" layout="table" infoClass="alert alert-info"
+				errorClass="alert alert-danger" warnClass="alert alert-warning" />
+
 			<div class="row">
 				<div class="form-group col-md-6">
-					<h:outputLabel for="senha" value="Senha:" />
-					<h:inputSecret id="senha" value="#{usuarioController.usuario.password}" required="true"
-						requiredMessage="O Campo Senha e de preenchimento obrigatório" validatorMessage="O campo Senha deve ter entre 3 e 10 caracteres" styleClass="form-control">
-						<f:validateLength minimum="3" maximum="10" />
-					</h:inputSecret>
+					<h:outputLabel for="name" value="Nome:" />
+					<h:inputText id="name" value="#{usuarioController.usuario.name}" required="true" requiredMessage="O Campo Nome e de preenchimento obrigatório"
+						styleClass="form-control" />
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="form-group col-md-6">
-					<h:outputLabel for="perfil" value="Perfil:" />
-					<h:selectOneMenu id="perfil" value="#{usuarioController.perfilCadastro}" styleClass="form-control" required="true"
-						requiredMessage="O Campo Perfil e de preenchimento obrigatório">
-						<f:selectItem itemValue="#{null}" itemLabel="selecione um valor" />
-						<f:selectItems value="#{usuarioController.rolesList}" var="role" itemLabel="#{role.label}" itemValue="#{role.name}" />
-					</h:selectOneMenu>
+					<h:outputLabel for="email" value="Email:" />
+					<h:inputText id="email" value="#{usuarioController.usuario.email}" required="true" requiredMessage="O Campo Email e de preenchimento obrigatório"
+						styleClass="form-control">
+						<f:validator validatorId="emailValidator" />
+					</h:inputText>
 				</div>
 			</div>
 
-		</a4j:region>
+			<a4j:region rendered="#{null == usuarioController.usuario.id}">
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<h:outputLabel for="senha" value="Senha:" />
+						<h:inputSecret id="senha" value="#{usuarioController.usuario.password}" required="true"
+							requiredMessage="O Campo Senha e de preenchimento obrigatório" validatorMessage="O campo Senha deve ter entre 3 e 10 caracteres"
+							styleClass="form-control">
+							<f:validateLength minimum="3" maximum="10" />
+						</h:inputSecret>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<h:outputLabel for="perfil" value="Perfil:" />
+						<h:selectOneMenu id="perfil" value="#{usuarioController.perfilCadastro}" styleClass="form-control" required="true"
+							requiredMessage="O Campo Perfil e de preenchimento obrigatório">
+							<f:selectItem itemValue="#{null}" itemLabel="selecione um valor" />
+							<f:selectItems value="#{usuarioController.rolesList}" var="role" itemLabel="#{role.label}" itemValue="#{role.name}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+			</a4j:region>
 
 
-		<a4j:region rendered="#{null != usuarioController.usuario.id}">
+			<a4j:region rendered="#{null != usuarioController.usuario.id}">
+
+				<div class="row">
+
+					<div class="form-group col-md-3">
+						<rich:dataTable value="#{usuarioController.usuario.authorities}" var="perfil" styleClass="table">
+							<f:facet name="header">PERFIS ASSOCIADOS</f:facet>
+							<rich:column style="text-align:center;width:50%;">
+								<h:outputText value="#{perfil.name}" />
+								<a4j:commandLink actionListener="#{usuarioController.removerPerfil(perfil)}" value="" render="@all" execute="@this">
+									<span class="glyphicon glyphicon-arrow-right" style="float: right;" />
+								</a4j:commandLink>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+
+					<div class="form-group col-md-3">
+						<rich:dataTable value="#{usuarioController.rolesList}" var="perfil" styleClass="table">
+							<f:facet name="header">PERFIS DISPONÍVEIS</f:facet>
+							<rich:column style="text-align:center;width:50%;">
+								<a4j:commandLink actionListener="#{usuarioController.incluirPerfil(perfil)}" value="" render="@all" execute="@this">
+									<span class="glyphicon glyphicon-arrow-left" style="float: left;" />
+								</a4j:commandLink>
+								<h:outputText value="#{perfil.name}" />
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</div>
+
+			</a4j:region>
+
 
 			<div class="row">
-
 				<div class="form-group col-md-3">
-					<rich:dataTable value="#{usuarioController.usuario.authorities}" var="perfil" styleClass="table">
-						<f:facet name="header">PERFIS ASSOCIADOS</f:facet>
-						<rich:column style="text-align:center;width:50%;">
-							<h:outputText value="#{perfil.name}" />
-							<a4j:commandLink actionListener="#{usuarioController.removerPerfil(perfil)}" value="" render="@all" execute="@this">
-								<span class="glyphicon glyphicon-arrow-right" style="float: right;"/>
-							</a4j:commandLink>
-						</rich:column>
-					</rich:dataTable>
+					<a4j:commandButton value="Gravar" action="#{usuarioController.salvar()}" styleClass="btn form-control" render="@form" />
 				</div>
-
 				<div class="form-group col-md-3">
-					<rich:dataTable value="#{usuarioController.rolesList}" var="perfil" styleClass="table">
-						<f:facet name="header">PERFIS DISPONÍVEIS</f:facet>
-						<rich:column style="text-align:center;width:50%;">
-							<a4j:commandLink actionListener="#{usuarioController.incluirPerfil(perfil)}" value="" render="@all" execute="@this">								
-								<span class="glyphicon glyphicon-arrow-left" style="float: left;"/>
-							</a4j:commandLink>
-							<h:outputText value="#{perfil.name}" />
-						</rich:column>
-					</rich:dataTable>
+					<a4j:commandButton value="Voltar" styleClass="btn form-control" render="@form" immediate="true"
+						actionListener="#{usuarioController.voltar()}">
+						<a4j:param assignTo="#{usuarioController.acao}" value="pesquisar" />
+					</a4j:commandButton>
 				</div>
 			</div>
 
-		</a4j:region>
-
-
-		<div class="row">
-			<div class="form-group col-md-3">
-				<a4j:commandButton value="Gravar" action="#{usuarioController.salvar()}" styleClass="btn form-control" render="@form" />
-			</div>
-			<div class="form-group col-md-3">
-				<a4j:commandButton value="Voltar" styleClass="btn form-control" render="@form" immediate="true"
-					actionListener="#{usuarioController.limparUsuario()}">
-					<a4j:param assignTo="#{usuarioController.acao}" value="pesquisar" />
-				</a4j:commandButton>
-			</div>
 		</div>
 
-	</rich:panel>
+
+	</div>
+
 
 </ui:composition>

@@ -2,47 +2,47 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich">
 
-	<rich:panel style="min-height: 500px;">
 
-		<f:facet name="header">
-			<h:outputText value="MENU SISTEMA" />
-		</f:facet>
 
-		<h:form>
+	<h:form>
 
-			<rich:panelMenu style="width:200px" itemMode="ajax" groupMode="ajax" groupExpandedLeftIcon="triangleUp" 
-							groupCollapsedLeftIcon="triangleDown" 	topGroupExpandedRightIcon="chevronUp" 
-							 topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc"
-								itemChangeListener="#{panelMenuBean.updateCurrent}">
+		<div class="panel panel-primary menu">
 
-				<rich:panelMenuGroup label="ADMINISTRADOR">
+			<div class="panel-heading">
+				<b>MENU</b>
+			</div>
 
-					<rich:panelMenuItem label="USUÁRIOS SISTEMA" action="/pages/usuario/cadastro-usuarios.xhtml">
-						<f:param name="acao" value="pesquisar" />
-					</rich:panelMenuItem>
+			<div class="panel-body">
 
-					<rich:panelMenuItem label="Item 1.2" name="Item_1_2" />
-					<rich:panelMenuItem label="Item 1.3" name="Item_1_3" />
-				</rich:panelMenuGroup>
-				<rich:panelMenuGroup label="MENU 2">
-					<rich:panelMenuItem label="Item 2.1" name="Item_2_1" />
-					<rich:panelMenuItem label="Item 2.2" name="Item_2_2" />
-					<rich:panelMenuItem label="Item 2.3" name="Item_2_3" />
-					<rich:panelMenuGroup label="Group 2.4">
-						<rich:panelMenuItem label="Item 2.4.1" name="Item_2_4_1" />
-						<rich:panelMenuItem label="Item 2.4.2" name="Item_2_4_2" />
-						<rich:panelMenuItem label="Item 2.4.3" name="Item_2_4_3" />
-					</rich:panelMenuGroup>
-					<rich:panelMenuItem label="Item 2.5" name="Item_2_5" />
-				</rich:panelMenuGroup>
-				<rich:panelMenuGroup label="MENU 3">
-					<rich:panelMenuItem label="Item 3.1" name="Item_3_1" />
-					<rich:panelMenuItem label="Item 3.2" name="Item_3_2" />
-					<rich:panelMenuItem label="Item 3.3" name="Item_3_3" />
-				</rich:panelMenuGroup>
-			</rich:panelMenu>
+				<ul class="nav nav-pills nav-stacked">
 
-		</h:form>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ADMINISTRADOR <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>
+							  <h:commandLink action="/pages/usuario/cadastro-usuarios.xhtml" value="Pesquisar" styleClass="link-menu">
+								<f:param name="acao" value="pesquisar" />
+							  </h:commandLink>
+							</li>
+							
+							<li><a href="#">Submenu 1-2</a></li>
+							
+							<li><a href="#">Submenu 1-3</a></li>
+							
+						</ul>
+						
+					</li>
 
-	</rich:panel>
+					<li><a href="#">Menu 2</a></li>
+					<li><a href="#">Menu 3</a></li>
+					
+				</ul>
+
+
+			</div>
+
+		</div>
+
+	</h:form>
+
+
 </ui:composition>

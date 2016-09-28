@@ -118,10 +118,13 @@ public class UsuarioController extends JsfUtil implements Serializable {
 		}
 	}
 
-	public void limparUsuario() {
+	public void voltar() {
 		try {
+			
 			usuario = new User();
 			perfilCadastro = null;
+			listaUsuarios = service.listar();
+
 		} catch (Exception e) {
 			tratarErro(e);
 		}
